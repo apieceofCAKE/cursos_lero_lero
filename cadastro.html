@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/cor_erro_formulario.css">
 
-    <title>Cursos Lero Lero</title>
+    <title>Cadastro - Cursos Lero Lero</title>
 
   </head>
 
@@ -18,12 +18,6 @@
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
 
         <a class="navbar-brand h4" href="index.html">Cursos Lero Lero</a>
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" 
-        data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" 
-        aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
         
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
@@ -55,6 +49,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-5 mx-auto">
+
           <div class="myform form ">
 
             <div class="container pt-5">
@@ -64,24 +59,25 @@
             </div>
 
             <form class="py-3" id="form-cadastro" method="POST">
+              
                 <div class="form-group">
                   <label for="Campo_cadastro">Nome completo</label>
-                  <input type="text"  name="firstname" class="form-control" id="firstname" placeholder="Nome completo (obrigatório)">
+                  <input type="text"  name="name" class="form-control" id="name" placeholder="(Obrigatório)">
                 </div>
 
                 <div class="form-group">
-                  <label for="Campo_cadastro">CPF</label>
-                  <input type="text"  name="cpf" class="form-control cpf" id="cpf" placeholder="CPF, somente números (obrigatório)">
+                  <label for="Campo_cadastro">CPF (somente números)</label>
+                  <input type="text"  name="cpf" class="form-control cpf" id="cpf" placeholder="(Obrigatório)">
                 </div>
 
                 <div class="form-group">
                   <label for="Campo_cadastro">Endereço de email</label>
-                  <input type="email" name="email"  class="form-control" id="email" placeholder="Email (obrigatório)">
+                  <input type="email" name="email"  class="form-control" id="email" placeholder="(Obrigatório)">
                 </div>
 
                 <div class="form-group">
-                  <label for="Campo_cadastro">Senha</label>
-                  <input type="password" name="password" id="password"  class="form-control password" placeholder="Nova senha (mínimo de 6 dígitos)">
+                  <label for="Campo_cadastro">Senha (mínimo de 6 dígitos)</label>
+                  <input type="password" name="password" id="password"  class="form-control password" placeholder="(Obrigatória)">
                 </div>
 
                 <div class="form-group">
@@ -106,7 +102,7 @@
     
     <!-- Rodapé -->
     <footer class="navbar navbar-fixed-bottom bg-secondary text-white">
-      <div class="footer-copyright text-center py-3">2020 Caíque e João Pedro
+      <div class="footer-copyright mx-auto py-3">2020 Caíque e João Pedro
       </div>
     </footer>
 
@@ -116,38 +112,41 @@
     <script type="text/javascript" src="js/jquery-validation/dist/jquery.validate.min.js"></script>
     <script type="text/javascript" src="js/validate_traducao.js"></script>
 
-
     <script>
       $(document).ready(function() {
-      $('#form-cadastro').validate({
-        rules: {
+        $("#form-cadastro").validate({
+          rules: {
 
-          name: { required: true, minlength: 3, maxlength: 50 },
+            name: { required: true, minlength: 3, maxlength: 50 },
 
-          cpf: { required: true, minlength: 11, maxlength:11, digits: true },
+            cpf: { required: true, minlength: 11, maxlength:11, digits: true },
 
-          email: { required: true, maxlength: 50 },
+            email: { required: true, maxlength: 50 },
 
-          password: { required: true, minlength: 6, maxlength: 255 }
+            password: { required: true, minlength: 6, maxlength: 255 }
 
-        }, messages: {
+          }, 
+          messages: {
 
-          name: { required: 'O Nome é obrigatório', minlength: 'Mínimo de 3 dígitos', 
-          maxlength: 'Máximo de 50 dígitos' },
+            name: {required: "Obrigatório", 
+            minlength: "3 caracteres no mínimo", 
+            maxlength: "50 caracteres no máximo"},
 
-          cpf: { required: 'O CPF é obrigatório', minlength: 'O CPF deve ter 11 dígitos', 
-          maxlength: 'O CPF deve ter 11 dígitos'},
+            cpf: {required: "Obrigatório",
+            minlength: "O CPF deve ter 11 dígitos", 
+            maxlength: "O CPF deve ter 11 dígitos"},
 
-          email: { required: 'O email é obrigatório', maxlength: 'Máximo de 50 dígitos' },
+            email: {required: "Obrigatório", 
+            maxlength: "50 caracteres no máximo"},
 
-          password: { required: 'A senha é obrigatória', minlength: 'Mínimo de 6 dígitos', 
-          maxlength: 'Máximo de 255 dígitos' },
-        },
+            password: {required: "Obrigatória", 
+            minlength: "6 caracteres no mínimo", 
+            maxlength: "255 caracteres no máximo"},
+          },
 
-        submitHandler: function(form) {
-          form.submit();
-        }
-
+          submitHandler: function(form) {
+            form.submit();
+          }
         });
       });
     </script>

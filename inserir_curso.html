@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/cor_erro_formulario.css">
 
-    <title>Cursos Lero Lero</title>
+    <title>Inserir curso - Cursos Lero Lero</title>
 
   </head>
 
@@ -18,12 +18,6 @@
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
 
         <a class="navbar-brand h4" href="index.html">Cursos Lero Lero</a>
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" 
-        data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" 
-        aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
         
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
@@ -52,54 +46,57 @@
       </nav>   
     </header>
 
-    <div class="container-fluid">
-        <div class="myform form ">
-            <div class="container pt-5">
-                <div class="text-center pt-5">
-                    <h1 class=" lead text-primary">Novo curso</h1>
-                </div>
-            </div>
-
-            <form class="py-3" id="form-curso" method="POST">
-                <div class="form-group">
-                    <label for="Campo_cadastro">Nome do curso</label>
-                    <input type="text"  name="nome_curso" class="form-control" id="nome_curso" 
-                    placeholder="(Obrigatório)">
-                </div>
-
-                <div class="form-group">
-                    <label for="Campo_cadastro">Requisito</label>
-                    <input type="text"  name="requisito" class="form-control requisito" 
-                    id="requisito" placeholder="(Opcional)">
-                </div>
-
-                <div class="form-group">
-                    <label for="Campo_cadastro">Ementa</label>
-                    <input name="preco" id="preco"  class="form-control preco" placeholder="(Opcional)">
-                </div>
-
-                <div class="form-group">
-                    <label for="Campo_cadastro">Carga horária</label>
-                    <input  type="text" name="carga_horaria"  class="form-control" 
-                    id="carga_horaria" placeholder="(Opcional)">
-                </div>
-
-                <div class="form-group">
-                    <label for="Campo_cadastro">Preço</label>
-                    <input type="text" name="preco" id="preco"  
-                    class="form-control preco" placeholder="(Opcional)">
-                </div>
-
-                <div class="col-md-12 text-center mb-3">
-                    <button type="submit" class=" btn btn-primary tx-tfm">Inserir no sistema</button>
-                </div>
-            </form>
+    <div class="container-fluid py-5">
+    
+      <div class="myform form">
+    
+        <div class="container pt-5">
+          <div class="text-center pt-5">
+            <h1 class="text-primary">Novo curso</h1>
+          </div>
         </div>
+
+        <form class="py-3" id="form-curso" method="POST">
+
+          <div class="form-group">
+            <label for="Campo_cadastro">Nome do curso</label>
+            <input type="text"  name="nome" class="form-control nome" id="nome" 
+            placeholder="(Obrigatório)">
+          </div>
+
+          <div class="form-group">
+            <label for="Campo_cadastro">Requisito</label>
+            <input type="text"  name="requisito" class="form-control requisito" 
+            id="requisito" placeholder="(Opcional)">
+          </div>
+
+          <div class="form-group">
+            <label for="Campo_cadastro">Ementa</label>
+            <input name="ementa" id="ementa"  class="form-control ementa" placeholder="(Opcional)">
+          </div>
+
+          <div class="form-group">
+            <label for="Campo_cadastro">Carga horária</label>
+            <input  type="text" name="carga_horaria"  class="form-control carga_horaria" 
+            id="carga_horaria" placeholder="(Opcional)">
+          </div>
+
+          <div class="form-group">
+            <label for="Campo_cadastro">Preço</label>
+            <input type="text" name="preco" id="preco"  
+            class="form-control preco" placeholder="(Opcional)">
+          </div>
+
+          <div class="col-md-12 text-center mb-3">
+            <button type="submit" class=" btn btn-primary tx-tfm">Inserir no sistema</button>
+          </div>
+        </form>
+      </div>
     </div>
     
     <!-- Rodapé -->
     <footer class="navbar navbar-fixed-bottom bg-secondary text-white">
-      <div class="footer-copyright text-center py-3">2020 Caíque e João Pedro
+      <div class="footer-copyright mx-auto py-3">2020 Caíque e João Pedro
       </div>
     </footer>
 
@@ -113,35 +110,37 @@
 
     <script>
       $(document).ready(function() {
-        $('#form-curso').validate({
-            rules: {
+        $("#form-curso").validate({
+          rules: {
 
-                nome_curso: {required: true, minlength: 3, maxlength: 50},
+            nome: { required: true, minlength: 3, maxlength: 50 },
 
-                requisito: {maxlength: 255},
+            requisito: { maxlength: 255 },
 
-                ementa: {maxlength: 255},
+            ementa: { maxlength: 255 },
 
-                carga_horaria: {number: true},
+            carga_horaria: { digits: true, maxlength: 5 },
 
-                preco: {number: true}
+            preco: { number: true }
 
-            },messages: {
+          },
+          messages: {
 
-                nome_curso: {required: "Obrigatório",
-                minlength: "3 caracteres no mínimo",
-                maxlength: "50 caracteres no máximo"},
+            nome: {required: "Obrigatório",
+            minlength: "3 caracteres no mínimo",
+            maxlength: "50 caracteres no máximo"},
 
-                requisito: {maxlength: "255 caracteres no máximo"},
+            requisito: {maxlength: "255 caracteres no máximo"},
 
-                ementa: {maxlength: "255 caracteres no máximo"}
-            },
+            ementa: {maxlength: "255 caracteres no máximo"},
 
-            submitHandler: function(form) {
-                form.submit();
-            }
+            carga_horaria: {maxlength: "5 caracteres no máximo"}
+          },
 
-            });
+          submitHandler: function(form) {
+              form.submit();
+          }
+        });
       });
     </script>
   </body>
